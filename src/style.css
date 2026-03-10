@@ -1,5 +1,22 @@
 /* Import TailwindCSS */
 @import "tailwindcss";
+@import url('/Expose_Complete/Fonts/WEB/css/expose.css');
+
+body {
+  font-family: Expose-Regular, sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  font-family: Expose-Black, sans-serif;
+}
+
+button,
+.font-extrabold,
+.font-bold {
+  font-family: Expose-Bold, sans-serif;
+}
 
 /* Diagnostic Styling 
 - Delete when live to world (production phase)

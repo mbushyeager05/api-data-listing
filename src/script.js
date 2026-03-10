@@ -26,7 +26,6 @@ const searchInput  = document.getElementById('search-input');
 const searchBtn    = document.getElementById('search-btn');
 const searchStatus = document.getElementById('search-status');
 const statusText   = document.getElementById('search-status-text');
-const clearBtn     = document.getElementById('clear-btn');
 const totalCount   = document.getElementById('total-count');
 
 // Helpers
@@ -178,7 +177,7 @@ async function fetchData() {
     const total    = json.pagination?.total ?? 0;
     totalPages     = Math.min(Math.ceil(total / LIMIT), 100);
 
-    totalCount.textContent = total.toLocaleString() + ' Works';
+    if (totalCount) totalCount.textContent = total.toLocaleString() + ' Works';
 
     if (currentQuery) {
       statusText.innerHTML = `Results for <strong>"${currentQuery}"</strong> — ${total.toLocaleString()} works`;
@@ -204,14 +203,6 @@ searchForm.addEventListener('submit', e => {
   currentPage  = 1;
   fetchData();
   scrollToTop();
-});
-
-clearBtn.addEventListener('click', () => {
-  currentQuery      = '';
-  currentPage       = 1;
-  searchInput.value = '';
-  searchStatus.classList.replace('flex', 'hidden');
-  fetchData();
 });
 
 function scrollToTop() {

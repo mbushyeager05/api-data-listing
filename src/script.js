@@ -84,7 +84,7 @@ function renderCards(artworks) {
         style="aspect-ratio:4/3; outline:2px solid ${ink}; outline-offset:-2px; background:${ink}11;">
         ${image
           ? `<img src="${image}" alt="${artwork.title}" loading="lazy" class="card-img w-full h-full object-cover block" />`
-          : `<div class="w-full h-full flex items-center justify-center text-[0.65rem] tracking-widest opacity-30" style="color:${ink};">NO IMAGE</div>`
+          : `<div class="w-full h-full flex items-center justify-center text-[0.65rem] tracking-widest opacity-30" style="color:#1a1a1a;">NO IMAGE</div>`
         }
       </div>
 
@@ -93,14 +93,14 @@ function renderCards(artworks) {
           style="background:${ink}; color:${bg};">${medium}</span>
 
         <div class="font-extrabold text-[1.05rem] leading-tight mb-3 uppercase tracking-tight"
-          style="color:${ink};">${artwork.title}</div>
+          style="color:#1a1a1a;">${artwork.title}</div>
 
         <div class="flex justify-between items-end">
-          <span class="text-[0.7rem] leading-relaxed opacity-75" style="color:${ink};">${artist}</span>
-          <span class="font-extrabold text-[1.3rem] leading-none opacity-[0.12]" style="color:${ink};">${year}</span>
+          <span class="text-[0.7rem] leading-relaxed opacity-75" style="color:#1a1a1a;">${artist}</span>
+          <span class="font-extrabold text-[1.3rem] leading-none opacity-[0.12]" style="color:#1a1a1a;">${year}</span>
         </div>
 
-        <div class="mt-3 text-[0.6rem] tracking-wide opacity-45" style="color:${ink};">${artwork.date_display ?? ''}</div>
+        <div class="mt-3 text-[0.6rem] tracking-wide opacity-45" style="color:#1a1a1a;">${artwork.date_display ?? ''}</div>
       </figcaption>
     `;
 

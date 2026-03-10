@@ -4,24 +4,158 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>API Data Listing</title>
+    <title>AIC Print Edition</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&display=swap" rel="stylesheet" />
+
 
     <!-- Compiled CSS file -->
-     <link rel="stylesheet" href="/src/style.css">
+    <link rel="stylesheet" href="/src/style.css" />
+
     <!-- Transpiled JS -->
     <script src="/src/script.js" type="module" defer></script>
-
   </head>
-  <body>
 
+  <body class="bg-[#f2ede4] min-h-screen pb-24 font-syne">
 
-    <main class="dataContainer">
+    <div id="app" class="relative z-10">
 
-        <!-- Static Template
-        Your template
-        -->
-        
-    </main>
-  
+      <!-- ── Header ── -->
+      <header class="px-12 pt-12 pb-10 border-b-[2.5px] border-black mb-10">
+        <div class="flex justify-between items-end flex-wrap gap-6">
+
+          <!-- Title -->
+          <div>
+            <!-- Riso ink dots -->
+            <div class="flex mb-4">
+              <div class="w-[22px] h-[22px] rounded-full bg-[#f7e642] border-2 border-black" style="box-shadow:1px 1px 0 #000;"></div>
+              <div class="w-[22px] h-[22px] rounded-full bg-[#e63946] border-2 border-black -ml-[7px]" style="box-shadow:1px 1px 0 #000;"></div>
+              <div class="w-[22px] h-[22px] rounded-full bg-[#06c8c8] border-2 border-black -ml-[7px]" style="box-shadow:1px 1px 0 #000;"></div>
+            </div>
+            <h1 class="text-[3.5rem] font-extrabold text-black leading-none tracking-tighter uppercase">
+              AIC Print<br />Edition
+            </h1>
+          </div>
+
+          <!-- Meta -->
+          <div class="text-right text-[0.65rem] font-bold tracking-widest text-black uppercase leading-loose opacity-40">
+            3-Color Risograph<br />
+            Art Institute of Chicago<br />
+            <span id="total-count">— Works</span>
+          </div>
+
+        </div>
+
+        <!-- Search -->
+        <div class="mt-8 max-w-xl">
+          <form id="search-form" class="flex">
+            <input
+              type="text"
+              id="search-input"
+              class="search-input flex-1 font-semibold text-sm text-black bg-white border-[2.5px] border-black border-r-0 px-5 py-3 tracking-wide"
+              placeholder="Search the collection… try 'Monet' or 'impressionism'"
+              autocomplete="off"
+            />
+            <button
+              type="submit"
+              id="search-btn"
+              class="font-extrabold text-[0.7rem] tracking-widest uppercase text-[#f2ede4] bg-black border-[2.5px] border-black px-6 cursor-pointer whitespace-nowrap hover:bg-[#e63946] hover:border-[#e63946] transition-colors"
+            >
+              Search
+            </button>
+          </form>
+
+          <!-- Search status (shown via JS) -->
+          <div id="search-status" class="hidden items-center gap-4 mt-3">
+            <span id="search-status-text" class="text-[0.7rem] text-black opacity-50 tracking-wide"></span>
+            <button
+              id="clear-btn"
+              class="font-bold text-[0.6rem] tracking-widest uppercase bg-transparent border-[1.5px] border-black px-2 py-0.5 cursor-pointer text-black hover:bg-black hover:text-[#f2ede4] transition-colors"
+            >
+              Clear ✕
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- ── Card Grid ── -->
+      <main class="dataContainer px-12 grid grid-cols-3 gap-8" id="grid">
+
+        <!-- ── Static Template Card ── -->
+        <figure class="card relative overflow-hidden cursor-pointer bg-[#f7e642]" style="box-shadow:4px 4px 0 #1a1a1a88;">
+
+          <!-- Artwork image -->
+          <div
+            class="overflow-hidden mx-3 mt-3 relative z-10"
+            style="aspect-ratio:4/3; outline:2px solid #1a1a1a; outline-offset:-2px; background:#1a1a1a11;"
+          >
+            <img
+              src="https://www.artic.edu/iiif/2/2d484387-2509-5e8e-2c43-22f9981972eb/full/400,/0/default.jpg"
+              alt="A Sunday on La Grande Jatte"
+              class="card-img w-full h-full object-cover block"
+            />
+          </div>
+
+          <!-- Caption -->
+          <figcaption class="relative z-20 px-5 pt-4 pb-5">
+
+            <!-- Medium badge -->
+            <span
+              class="inline-block text-[0.58rem] font-bold tracking-widest uppercase px-2.5 py-0.5 mb-2.5"
+              style="background:#1a1a1a; color:#f7e642;"
+            >
+              Oil
+            </span>
+
+            <!-- Title -->
+            <div class="font-extrabold text-[1.05rem] leading-tight mb-3 uppercase tracking-tight" style="color:#1a1a1a;">
+              A Sunday on La Grande Jatte
+            </div>
+
+            <!-- Artist + ghost year -->
+            <div class="flex justify-between items-end">
+              <span class="text-[0.7rem] leading-relaxed opacity-75" style="color:#1a1a1a;">
+                Georges Seurat
+              </span>
+              <span class="font-extrabold text-[1.3rem] leading-none opacity-[0.12]" style="color:#1a1a1a;">
+                1884
+              </span>
+            </div>
+
+            <!-- Date -->
+            <div class="mt-3 text-[0.6rem] tracking-wide opacity-45" style="color:#1a1a1a;">
+              1884–86
+            </div>
+
+          </figcaption>
+        </figure>
+        <!-- ── End Static Template Card ── -->
+
+      </main>
+
+      <!-- ── Pagination ── -->
+      <div id="pagination" class="flex justify-center items-center gap-6 pt-12 px-12">
+        <button
+          id="btn-prev"
+          class="font-extrabold text-[0.7rem] tracking-widest uppercase text-[#f2ede4] bg-black border-[2.5px] border-black px-5 py-2.5 cursor-pointer hover:bg-[#e63946] hover:border-[#e63946] transition-colors"
+          style="box-shadow:3px 3px 0 #e63946;"
+        >
+          ← Prev
+        </button>
+        <span class="font-bold text-[0.75rem] tracking-widest">1 / 1</span>
+        <button
+          id="btn-next"
+          class="font-extrabold text-[0.7rem] tracking-widest uppercase text-[#f2ede4] bg-black border-[2.5px] border-black px-5 py-2.5 cursor-pointer hover:bg-[#06c8c8] hover:border-[#06c8c8] transition-colors"
+          style="box-shadow:3px 3px 0 #06c8c8;"
+        >
+          Next →
+        </button>
+      </div>
+
+    </div><!-- /#app -->
+
   </body>
 </html>

@@ -118,7 +118,7 @@ function fetchArtworks( query = "", page = 1 ) {
         // Template
         const template = `
           <figure
-            class="card relative overflow-hidden cursor-pointer transition-[transform,box-shadow] duration-200 ease-out"
+            class="card relative overflow-hidden transition-[transform,box-shadow] duration-200 ease-out"
             style="background:${bg}; box-shadow:4px 4px 0 ${ink}88;"
           >
             <!-- Artwork image -->
